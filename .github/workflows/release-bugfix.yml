@@ -47,7 +47,6 @@ jobs:
       - name: Publish and Sign OCI Charts
         run: |
           set -x
-          shopt -s nullglob
           for chart in `find .cr-release-packages -name '*.tgz' -print`; do
             helm push ${chart} oci://ghcr.io/${GITHUB_REPOSITORY} | tee helm-push-output.log
             file_name=${chart##*/}
