@@ -48,7 +48,7 @@ jobs:
         run: |
           set -x
           for chart in `find .cr-release-packages -name '*.tgz' -print`; do
-            helm push ${chart} oci://ghcr.io/${GITHUB_REPOSITORY} | tee helm-push-output.log
+            helm push ${chart} oci://ghcr.io/${GITHUB_REPOSITORY} |& tee helm-push-output.log
             echo "Printing Log file"
             cat helm-push-output.log
             file_name=${chart##*/}
